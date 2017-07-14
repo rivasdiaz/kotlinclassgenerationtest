@@ -6,9 +6,11 @@ DECOMPILER_FILE=build/cfr.jar
 OUTPUT_LIBS=build/libs
 JAR=kotlinclassgenerationtest.jar
 OUTPUT_CLASSES=build/kotlin-classes
+OUTPUT_DECOMPILED=build/tmp/decompiled
 
 if [ ! -f $DECOMPILER_FILE ]; then
     curl --progress-bar --output $DECOMPILER_FILE $DECOMPILER_URL
 fi
 
-java -jar $DECOMPILER_FILE $OUTPUT_LIBS/$JAR
+mkdir --parent $OUTPUT_DECOMPILED
+java -jar $DECOMPILER_FILE --outputpath $OUTPUT_DECOMPILED $OUTPUT_LIBS/$JAR
