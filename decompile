@@ -1,0 +1,14 @@
+#!/bin/sh
+
+DECOMPILER_URL=http://www.benf.org/other/cfr/cfr_0_122.jar
+DECOMPILER_FILE=build/cfr.jar
+
+OUTPUT_LIBS=build/libs
+JAR=kotlinclassgenerationtest.jar
+OUTPUT_CLASSES=build/kotlin-classes
+
+if [ ! -f $DECOMPILER_FILE ]; then
+    curl --progress-bar --output $DECOMPILER_FILE $DECOMPILER_URL
+fi
+
+java -jar $DECOMPILER_FILE $OUTPUT_LIBS/$JAR
