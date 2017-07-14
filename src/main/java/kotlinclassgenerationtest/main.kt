@@ -1,15 +1,17 @@
 package kotlinclassgenerationtest
 
 fun main(args: Array<String>) {
-    A().test().execute()
+    Container().action().execute()
 }
 
-class A {
-    fun test(): B = B(){
+class Container {
+
+    fun action(): Function = Function() {
         println("hello world")
     }
 }
 
-class B(val action:() -> Unit){
-    fun execute() = action()
+class Function(val block:() -> Unit){
+
+    fun execute() = block()
 }
